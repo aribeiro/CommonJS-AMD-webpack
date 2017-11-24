@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
    entry: {
@@ -10,7 +11,10 @@ module.exports = {
         libraryTarget: 'umd',
         library: "cloudsponge"
     },
+
+    plugins: [ new UglifyJsPlugin({test: /\.js($|\?)/i})]
+
     // Only for external libraries like jQuery, lodash, etc
-    // externals: ['./src/csUtils.js']
+    //externals: ['sentry']
 };
 
